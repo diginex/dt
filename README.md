@@ -40,3 +40,9 @@ dt dotnet run -p WebSocketApp
 | @schematics/update | 0.10.2 |
 | rxjs | 6.3.3 |
 | typescript | 3.1.3 |
+
+## About Diginex
+
+![Diginex Logo](https://www.diginex.com/wp-content/uploads/2018/09/diginex_chain_logo_-01-copy.png)
+
+Diginex develops and implements blockchain technologies to transform businesses and enrich society. At the core of Diginex is our people. We are a blend of financial service professionals, passionate blockchain technologists and experienced project managers. We work with corporates, institutions & governments to create solutions that build trust and increase efficiency.
