@@ -1,4 +1,11 @@
-#!/bin/sh
+#!/bin/bash
+
+trap ctrl_c INT
+
+function ctrl_c() {
+        echo "** Trapped CTRL-C"
+        docker kill $ID
+}
 
 if [ -z $1 ]
 then
@@ -12,4 +19,6 @@ fi
 #    exit 0
 #fi
 
-docker run --network=host --rm -it -v $(pwd):/workspace diginex/dt $@
+
+ID=`docker run --network=host -d -t -v $(pwd):/workspace diginex/dt $@`
+docker attach $ID
