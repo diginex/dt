@@ -4,6 +4,8 @@
 
 * NodeJS 8.12.0
 * NPM 6.4.1
+* Angular 7.0.2
+* .NET Core 2.1
 
 ## Angular 7.0.2
 
