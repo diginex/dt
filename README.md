@@ -27,6 +27,7 @@ Dotnet:
 
 ```sh
 dt dotnet run -p WebSocketApp
+dt dotnet test FsharpExchange.Tests
 ```
 
 ## Additional Info for Angular 7.0.2
