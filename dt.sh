@@ -19,6 +19,11 @@ fi
 #    exit 0
 #fi
 
+if [ $1 = 'ng' ] && [ $2 = 'serve' ]
+then
+    ID=`docker run --network=host -t -d -v $(pwd):/workspace diginex/dt $@`
+    docker attach $ID
+    exit 0
+fi
 
-ID=`docker run --network=host -d -t -v $(pwd):/workspace diginex/dt $@`
-docker attach $ID
+docker run --network=host -it -v $(pwd):/workspace diginex/dt $@
