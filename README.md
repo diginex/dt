@@ -7,6 +7,10 @@
 * Angular 7.0.2
 * .NET Core 2.1
 
+## Additional Tools
+
+* TypeORM
+
 ## Install
 
 ```sh

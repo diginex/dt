@@ -1,6 +1,7 @@
 FROM node:8.12.0-stretch
 
 RUN npm install -g @angular/cli@7.0.2
+RUN npm install typeorm -g
 RUN apt-get update
 RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
 RUN mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
