@@ -10,6 +10,7 @@
 ## Additional Tools
 
 * TypeORM
+* retire
 
 ## Install
 
