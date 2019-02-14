@@ -1,0 +1,6 @@
+dependencies:
+- name: monochart
+  repository: https://charts.cloudposse.com/incubator/
+  version: 0.8.0
+digest: sha256:80bb222677e00afe8c86e89260b95e5b00fa529699453a76a14bc4177b803d13
+generated: 2019-02-12T09:02:10.202556887Z

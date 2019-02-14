@@ -22,6 +22,13 @@ then
     exit 0
 fi
 
+if [ $1 = 'initchart' ]
+then
+    mkdir -p charts/$2
+    cp -r /charts/generic-angular-frontend/* charts/$2
+    exit 0
+fi
+
 if [ $1 = 'getScript' ]
 then
     cat /dt.sh

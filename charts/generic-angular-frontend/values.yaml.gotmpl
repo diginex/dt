@@ -1,0 +1,5 @@
+tateru-frontend:
+  {{ template "image" dict "repository" (datasource "config").repository "tag" (datasource "config").tag }}
+  {{ template "deployment" }}
+  {{ template "service" 80 }}
+  {{ template "tls-ingress" (datasource "config").ingress }}

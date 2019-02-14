@@ -22,6 +22,8 @@ RUN rm ./go1.11.5.linux-amd64.tar.gz
 RUN /usr/local/go/bin/go get github.com/hairyhenderson/gomplate/cmd/gomplate
 
 COPY ./*.sh ./
+COPY ./charts /charts
+
 RUN chmod +x /entrypoint.sh
 RUN mkdir workspace
 WORKDIR /workspace
