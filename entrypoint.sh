@@ -1,4 +1,11 @@
 #!/bin/sh
+
+GOROOT=/usr/local/go
+GOBIN=$GOROOT/bin
+GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH:$GOBIN:$GOPATH/bin
+export EDITOR=nano
+
 if [ -z $1 ]
 then
 #    cat /ca.sh

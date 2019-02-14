@@ -16,6 +16,11 @@ RUN apt-get install -y apt-transport-https ca-certificates apt-utils
 RUN apt-get update
 RUN apt-get install -y dotnet-sdk-2.1
 
+RUN wget https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.11.5.linux-amd64.tar.gz
+RUN rm ./go1.11.5.linux-amd64.tar.gz
+RUN /usr/local/go/bin/go get github.com/hairyhenderson/gomplate/cmd/gomplate
+
 COPY ./*.sh ./
 RUN chmod +x /entrypoint.sh
 RUN mkdir workspace
