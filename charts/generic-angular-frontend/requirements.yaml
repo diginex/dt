@@ -2,4 +2,4 @@ dependencies:
   - name: monochart
     version: ~0.8.0
     repository: '@cloudposse-incubator'
-    alias: tateru-frontend
+    alias: generic-angular-frontend
