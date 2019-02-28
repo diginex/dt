@@ -1,5 +1,5 @@
 dependencies:
   - name: monochart
     version: ~0.8.0
-    repository: '@cloudposse-incubator'
+    repository: '@source-repo'
     alias: generic-angular-frontend
