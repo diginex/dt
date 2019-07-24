@@ -1,0 +1,5 @@
+dependencies:
+  - name: monochart
+    version: ~0.8.0
+    repository: '@source-repo'
+    alias: nginx-mod-security

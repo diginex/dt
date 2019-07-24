@@ -1,0 +1,10 @@
+nginx-mod-security:
+  {{ template "image" dict "repository" (datasource "config").repository "tag" (datasource "config").tag }}  
+  {{ template "service" 81 }}
+  deployment:
+    enabled: true
+    pod:
+      annotations:
+        diginex.com/modsecurity-injection: "enabled"
+        diginex.com/modsecurity-listen-port: "81"
+        diginex.com/modsecurity-target-port: "80"
