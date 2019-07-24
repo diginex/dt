@@ -1,10 +1,16 @@
 nginx-mod-security:
   {{ template "image" dict "repository" (datasource "config").repository "tag" (datasource "config").tag }}  
-  {{ template "service" 81 }}
   deployment:
     enabled: true
     pod:
       annotations:
         diginex.com/modsecurity-injection: "enabled"
-        diginex.com/modsecurity-listen-port: "81"
-        diginex.com/modsecurity-target-port: "80"
+        diginex.com/modsecurity-listen-port: "80"
+        diginex.com/modsecurity-target-port: "81"
+      command: [ "\"bin/bash\", \"-c\", \"sed -i -e 's/80/81/g' /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'\"" ]
+  service:
+    enabled: true
+    ports:
+      default:
+        internal: 80
+        external: 80
