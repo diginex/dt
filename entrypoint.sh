@@ -36,6 +36,13 @@ then
     exit 0
 fi
 
+if [ $1 = 'initchart-general-mod-security-logstash' ]
+then
+    mkdir -p charts/$2
+    cp -r /charts/general-mod-security-logstash/* charts/$2
+    exit 0
+fi
+
 if [ $1 = 'getScript' ]
 then
     cat /dt.sh

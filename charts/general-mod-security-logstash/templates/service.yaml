@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "general-mod-security-logstash.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "general-mod-security-logstash.name" . }}
+    helm.sh/chart: {{ include "general-mod-security-logstash.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "general-mod-security-logstash.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
