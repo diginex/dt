@@ -19,13 +19,35 @@ spec:
         app.kubernetes.io/name: {{ include "general-mod-security-logstash.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      volumes:
+        - name: modsecurity-share-logs
+          emptyDir: {}
       containers:
+        - name: modsecurity
+          image: harbor.dev.diginex.fun/diginex/mod-security-crs-proxy
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 81
+          env:
+            - name: UPSTREAM
+              value: localhost:80
+            - name: LISTEN_PORT
+              value: "81"
+          volumeMounts:
+            - name: modsecurity-share-logs
+              mountPath: /var/log/apache2
+        - name: modsecurity-errorlog-exporter
+          image: harbor.dev.diginex.fun/diginex/modsecurity-logstash-elasticsearch
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: modsecurity-share-logs
+              mountPath: /logdata
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 81
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -35,6 +57,7 @@ spec:
             httpGet:
               path: /
               port: http
+#          command: [ "bin/bash", "-c", "sed -i -e 's/80/81/g' /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'" ]
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
